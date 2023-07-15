@@ -1,0 +1,169 @@
+<span class="flex">
+<label *ngIf="!ondetailFlag"
+  class="container-title container-title-position-default font-nbk"
+  for="transferCustomerReference"
+>
+  Currency Exchanger
+</label>
+<label *ngIf="ondetailFlag"
+  class="container-title container-title-position-default font-nbk"
+  for="transferCustomerReference"
+>
+EUR</label>
+<div class="form-column-top btn-back">
+  <div class="form-field">
+  <button *ngIf="ondetailFlag"
+  routerLink="/home">
+Back To Home          </button>
+  </div>
+  </div>
+
+</span>
+<section class="navbar">
+  <div class="form-row float-left">
+    <div class="form-column-top">
+      <div class="form-field">
+        <label
+          class="col-md-3 form-control-label form-label"
+          for="transferCustomerReference"
+        >
+          Amount
+        </label>
+        <input
+          type="number"
+          class="currencyCovertInput"
+          id="transferCustomerReference"
+          name="currencyCovertInput"
+          [(ngModel)]="amountValue"
+          (change)="onAmtChange(amountValue)"
+          matInput
+        />
+      </div>
+    </div>
+    <div class="form-column">
+      <div class="form-column-from-to margin-right-5">
+        <div class="form-field">
+          <label
+            class="col-md-3 form-control-label form-label"
+            for="transferAdditionalInfo"
+          >
+            From
+          </label>
+          <select
+            #fromVal
+            [disabled]="isDisabled"
+            [ngClass]="{
+              disabled: isDisabled == true
+            }"
+            [(ngModel)]="selectedFromCurrency"
+            (change)="onChange(fromVal.value)"
+          >
+            <option *ngFor="let curList of currencyList">
+              {{ curList.key }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-column-from-to margin-right-5 arrow-align">
+        <div class="form-field">
+          <div class="flex items-center justify-center">
+            <img src="assets/logo/arrow.png" class="dashboardCompanyLogo" />
+          </div>
+        </div>
+      </div>
+      <div class="form-column-from-to">
+        <div class="form-field">
+          <label
+            class="col-md-3 form-control-label form-label"
+            for="transferAdditionalInfo"
+          >
+            To
+          </label>
+          <select
+            #toVal
+            [disabled]="isDisabled"
+            [ngClass]="{
+              disabled: isDisabled == true
+            }"
+            [(ngModel)]="selectedToCurrency"
+            (change)="changeToCurrency(toVal.value)"
+          >
+            <option *ngFor="let curList of currencyList">
+              {{ curList.key }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row float-left">
+    <div class="form-column-top">
+      <div class="form-field"></div>
+    </div>
+    <div class="form-column">
+      <div class="form">
+        <button
+          [disabled]="isDisabled"
+          [ngClass]="{
+            disabled: isDisabled == true
+          }"
+          class="btn-submit"
+          routerLink="home"
+          (click)="convertCurreny()"
+        >
+          Convert
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="form-row float-left">
+    <div class="form-column-top">
+      <div class="form-field">
+        <label
+          type="text"
+          disabled
+          class="currencyCovertInput"
+          id="transferCustomerReference"
+          name="currencyCovertInput"
+          matInput
+          [ngClass]="{
+            disabled: true
+          }"
+          >1.00 EUR ={{ currencyCovertInput }}</label
+        >
+      </div>
+    </div>
+    <div class="form-column" >
+      <div class="form-column-top margin-right-5" [ngClass]="{'wdt-label':ondetailFlag==true}">
+        <div class="form-field">
+          <label
+            type="text"
+            disabled
+            class="currencyCovertInputUSD"
+            id="transferCustomerReference"
+            name="currencyCovertInput"
+            matInput
+            [ngClass]="{
+              disabled: true
+            }"
+            >{{ currencyCovertInputUSD }}</label
+          >
+        </div>
+      </div>
+      <div class="form-column-top">
+        <div class="form-field">
+          <button *ngIf="!ondetailFlag"
+            [ngClass]="{
+              disabled: isDisabled == true
+            }"
+            [disabled]="isDisabled"
+            class="btn-submit"
+            routerLink="/details">
+            More Details
+          </button>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

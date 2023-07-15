@@ -1,2 +1,2 @@
-# Currency-Exchange-App
+# currency-exchange
 Currency Exchange Application

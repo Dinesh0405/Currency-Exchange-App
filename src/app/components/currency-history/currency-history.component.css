@@ -1,0 +1,21 @@
+.container {
+    height: 550px;
+    box-shadow: 2px 2px 4px 1px lightgray;
+    background: white !important;
+  }
+  
+  .chart {
+    width: 80%;
+    height: 70%;
+    color: white !important;
+
+  }
+  
+  :host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: 20px;
+  }
+  
