@@ -27,6 +27,9 @@ export class CurrencyGridComponent implements OnInit {
 
     this.rateListAll();
   }
+  /**
+   * rates call for All gird 3X3 show
+   */
 
   rateListAll() {
     this.currencyExchangeService

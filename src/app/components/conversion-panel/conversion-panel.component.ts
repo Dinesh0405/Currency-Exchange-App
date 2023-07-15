@@ -41,6 +41,10 @@ currencyName:any;
   onAmtChange(value: number) {
     value != null ? (this.isDisabled = false) : (this.isDisabled = true);
   }
+  
+  /**
+   * first time load call for Countries
+   */
   loadContriesList() {
     this.currencyExchangeService
       .loadContryCurrencies()
@@ -62,10 +66,11 @@ currencyName:any;
 
   }
 
+  /**
+   * Conversion currency code due to paid API
+   */
   convertCurreny() {
-    // let obj={
-    //   from:this.selectedFromCurrencyValue
-    // }
+  
     if(this.selectedFromCurrencyValue !=null &&  this.selectedToCurrencyValue !=null){
     this.currencyCovertInputUSD = (
       (this.selectedFromCurrencyValue / this.selectedToCurrencyValue) *
@@ -88,6 +93,9 @@ currencyName:any;
     let tovalue = this.ratesList.filter((res: any) => res.key === event);
     this.selectedToCurrencyValue = tovalue[0].value;
   }
+   /**
+   * Rates List API call
+   */
   ratesValues() {
     this.currencyExchangeService
       .rates()
